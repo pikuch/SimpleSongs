@@ -40,7 +40,8 @@ namespace SimpleSongs.Controller
 
         protected void DeleteExistingSong()
         {
-            throw new NotImplementedException();
+            SongMenu songMenu = new SongMenu(new MenuView());
+            songMenu.Run();
         }
 
         protected void DisplaySong()

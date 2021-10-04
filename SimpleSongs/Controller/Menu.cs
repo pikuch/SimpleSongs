@@ -45,7 +45,7 @@ namespace SimpleSongs.Controller
                     Options[_cursor].Action();
                     break;
                 case ConsoleKey.UpArrow:
-                    _cursor = (_cursor > 0) ? 0 : Options.Count - 1;
+                    _cursor = (_cursor > 0) ? _cursor - 1 : Options.Count - 1;
                     break;
                 case ConsoleKey.DownArrow:
                     _cursor = (_cursor < Options.Count - 1) ? _cursor + 1 : 0;
