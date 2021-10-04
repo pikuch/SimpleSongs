@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SimpleSongs.Controller;
+using SimpleSongs.View;
 
 namespace SimpleSongs
 {
@@ -6,7 +7,8 @@ namespace SimpleSongs
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var mainMenu = new MainMenu(new MenuView());
+            mainMenu.Run();
         }
     }
 }
