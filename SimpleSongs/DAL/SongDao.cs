@@ -22,6 +22,15 @@ namespace SimpleSongs.DAL
             }
         }
 
+        public void DeleteSong(Song song)
+        {
+            using (var context = new SimpleSongsDbContext())
+            {
+                context.Songs.Remove(song);
+                context.SaveChanges();
+            }
+        }
+
         public IList<Song> GetAllSongs()
         {
             using (var context = new SimpleSongsDbContext())
