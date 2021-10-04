@@ -1,4 +1,6 @@
 ﻿using SimpleSongs.Model;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace SimpleSongs.DAL
 {
@@ -17,6 +19,14 @@ namespace SimpleSongs.DAL
             {
                 context.Songs.Add(song);
                 context.SaveChanges();
+            }
+        }
+
+        public IList<Song> GetAllSongs()
+        {
+            using (var context = new SimpleSongsDbContext())
+            {
+                return context.Songs.ToList();
             }
         }
     }

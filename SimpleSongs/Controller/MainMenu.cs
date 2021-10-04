@@ -51,7 +51,12 @@ namespace SimpleSongs.Controller
 
         protected void DisplayAllSongs()
         {
-            throw new NotImplementedException();
+            Console.Clear();
+            foreach (var song in SongDao.GetAllSongs())
+            {
+                Console.WriteLine(song);
+            }
+            Console.ReadKey();
         }
 
         protected void SortByTitles()
