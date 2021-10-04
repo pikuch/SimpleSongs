@@ -26,7 +26,17 @@ namespace SimpleSongs.DAL
         {
             using (var context = new SimpleSongsDbContext())
             {
-                return context.Songs.ToList();
+                IList<Song> songs = context.Songs.ToList();
+                return songs;
+            }
+        }
+
+        public IList<Song> GetAllSongsSorted()
+        {
+            using (var context = new SimpleSongsDbContext())
+            {
+                IList<Song> sortedSongs = context.Songs.OrderBy(s => s.Title).ToList();
+                return sortedSongs;
             }
         }
     }

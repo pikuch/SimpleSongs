@@ -8,7 +8,7 @@ namespace SimpleSongs
     {
         static void Main(string[] args)
         {
-            var mainMenu = new MainMenu(new MenuView(), new SongDao());
+            var mainMenu = new MainMenu(new MenuView());
             mainMenu.Run();
         }
     }

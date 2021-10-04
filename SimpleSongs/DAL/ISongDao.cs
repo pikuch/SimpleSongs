@@ -7,5 +7,6 @@ namespace SimpleSongs.DAL
     {
         public void AddSong(Song song);
         IList<Song> GetAllSongs();
+        IList<Song> GetAllSongsSorted();
     }
 }

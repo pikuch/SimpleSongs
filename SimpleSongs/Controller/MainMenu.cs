@@ -3,19 +3,18 @@ using SimpleSongs.Model;
 using SimpleSongs.Utilities;
 using SimpleSongs.View;
 using System;
+using System.Collections.Generic;
 
 namespace SimpleSongs.Controller
 {
     public class MainMenu : Menu
     {
-        private ISongDao SongDao { get; }
         /// <summary>
         /// Initializes main menu
         /// </summary>
         /// <param name="view">MenuView to use</param>
-        public MainMenu(IMenuView view, ISongDao songDao) : base(view)
+        public MainMenu(IMenuView view) : base(view)
         {
-            SongDao = songDao;
         }
 
         protected override void SetupOptions()
@@ -36,7 +35,7 @@ namespace SimpleSongs.Controller
             song.Title = UserInput.GetString("What is the title of the song?", 1, int.MaxValue);
             song.AlbumName = UserInput.GetString("What is the album name of the song?", 1, int.MaxValue);
             song.Length = UserInput.GetInt("What is the song's length in seconds?", 1, int.MaxValue);
-            SongDao.AddSong(song);
+            new SongDao().AddSong(song);
         }
 
         protected void DeleteExistingSong()
@@ -51,8 +50,10 @@ namespace SimpleSongs.Controller
 
         protected void DisplayAllSongs()
         {
+            SongDao songDao = new SongDao();
+            IEnumerable<Song> allSongs = songDao.GetAllSongs();
             Console.Clear();
-            foreach (var song in SongDao.GetAllSongs())
+            foreach (var song in allSongs)
             {
                 Console.WriteLine(song);
             }
@@ -61,7 +62,13 @@ namespace SimpleSongs.Controller
 
         protected void SortByTitles()
         {
-            throw new NotImplementedException();
+            SongDao songDao = new SongDao();
+            Console.Clear();
+            foreach (var song in songDao.GetAllSongsSorted())
+            {
+                Console.WriteLine(song);
+            }
+            Console.ReadKey();
         }
         protected void ExitMenu()
         {
