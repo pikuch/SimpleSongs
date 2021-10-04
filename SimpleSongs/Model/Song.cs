@@ -12,7 +12,7 @@
         public double Length { get; set; }
         public override string ToString()
         {
-            return $"[{Id}] Title: {Title} Author: {Author} AlbumName: {AlbumName} Length: {Length}";
+            return $"[{Id}] Title: {Title} Author: {Author} AlbumName: {AlbumName} Length: {Length}s";
         }
     }
 }

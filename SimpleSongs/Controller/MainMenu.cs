@@ -1,16 +1,21 @@
-﻿using SimpleSongs.View;
+﻿using SimpleSongs.DAL;
+using SimpleSongs.Model;
+using SimpleSongs.Utilities;
+using SimpleSongs.View;
 using System;
 
 namespace SimpleSongs.Controller
 {
     public class MainMenu : Menu
     {
+        private ISongDao SongDao { get; }
         /// <summary>
         /// Initializes main menu
         /// </summary>
         /// <param name="view">MenuView to use</param>
-        public MainMenu(IMenuView view) : base(view)
+        public MainMenu(IMenuView view, ISongDao songDao) : base(view)
         {
+            SongDao = songDao;
         }
 
         protected override void SetupOptions()
@@ -26,7 +31,12 @@ namespace SimpleSongs.Controller
 
         protected void AddNewSong()
         {
-            throw new NotImplementedException();
+            Song song = new Song();
+            song.Author = UserInput.GetString("Who is the author of the song?", 1, int.MaxValue);
+            song.Title = UserInput.GetString("What is the title of the song?", 1, int.MaxValue);
+            song.AlbumName = UserInput.GetString("What is the album name of the song?", 1, int.MaxValue);
+            song.Length = UserInput.GetInt("What is the song's length in seconds?", 1, int.MaxValue);
+            SongDao.AddSong(song);
         }
 
         protected void DeleteExistingSong()

@@ -8,7 +8,7 @@ namespace SimpleSongs
     /// <inheritdoc/>
     class SimpleSongsDbContext : DbContext
     {
-        DbSet<Song> Songs { get; set; }
+        public DbSet<Song> Songs { get; set; }
 
         /// <summary>
         /// Configures the database relationships and seeds some data
