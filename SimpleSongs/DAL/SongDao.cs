@@ -13,7 +13,7 @@ namespace SimpleSongs.DAL
         /// <param name="song">song to add</param>
         public void AddSong(Song song)
         {
-            using (var context = new SimpleSongsDbContext)
+            using (var context = new SimpleSongsDbContext())
             {
                 context.Songs.Add(song);
                 context.SaveChanges();

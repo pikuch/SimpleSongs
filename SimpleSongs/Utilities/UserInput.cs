@@ -30,5 +30,35 @@ namespace SimpleSongs.Utilities
             }
             return input;
         }
+
+        public static int GetInt(string prompt, int minValue, int maxValue)
+        {
+            string input = String.Empty;
+            int intInput = 0;
+            bool isValid = false;
+
+            Console.Clear();
+            while (!isValid)
+            {
+                Console.WriteLine(prompt);
+                input = Console.ReadLine();
+                if (int.TryParse(input, out intInput))
+                {
+                    if (intInput < minValue || intInput > maxValue)
+                    {
+                        Console.WriteLine($"Number has to be between {minValue} and {maxValue}");
+                    }
+                    else
+                    {
+                        isValid = true;
+                    }
+                    
+                } else
+                {
+                    Console.WriteLine($"Not a number");
+                }
+            }
+            return intInput;
+        }
     }
 }

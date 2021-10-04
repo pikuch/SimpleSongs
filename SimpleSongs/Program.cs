@@ -1,4 +1,5 @@
 ﻿using SimpleSongs.Controller;
+using SimpleSongs.DAL;
 using SimpleSongs.View;
 
 namespace SimpleSongs
@@ -7,7 +8,7 @@ namespace SimpleSongs
     {
         static void Main(string[] args)
         {
-            var mainMenu = new MainMenu(new MenuView());
+            var mainMenu = new MainMenu(new MenuView(), new SongDao());
             mainMenu.Run();
         }
     }
