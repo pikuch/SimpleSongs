@@ -6,7 +6,7 @@ namespace SimpleSongs.Controller
     {
         public string Name { get; }
         public Action Action { get; }
-        MenuOption(string name, Action action)
+        public MenuOption(string name, Action action)
         {
             Name = name;
             Action = action;

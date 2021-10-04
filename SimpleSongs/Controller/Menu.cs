@@ -4,18 +4,19 @@ using System.Collections.Generic;
 
 namespace SimpleSongs.Controller
 {
-    internal abstract class Menu
+    public abstract class Menu
     {
-        private IMenuView _view;
-        private bool _isRunning;
+        public IMenuView View { get; }
+        protected bool IsRunning { get; set; }
         private int _cursor;
         public string Title { get; set; }
         public List<MenuOption> Options { get; }
         
-        public Menu(MenuView view)
+        public Menu(IMenuView view)
         {
-            _view = view;
+            View = view;
             _cursor = 0;
+            Options = new List<MenuOption>();
         }
 
         protected abstract void SetupOptions();
@@ -24,11 +25,11 @@ namespace SimpleSongs.Controller
         {
             SetupOptions();
 
-            _isRunning = true;
+            IsRunning = true;
 
-            while (_isRunning)
+            while (IsRunning)
             {
-                _view.DisplayOptions(Title, Options, _cursor);
+                View.DisplayOptions(Title, Options, _cursor);
                 DecodeUserAction();
             }
             
