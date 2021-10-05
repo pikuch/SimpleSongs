@@ -22,7 +22,10 @@ namespace SimpleSongs.Controller
             {
                 return "Album name is empty";
             }
-            
+            if (song.Length < 1)
+            {
+                return "Song length is below one second";
+            }
 
             return "OK";
         }

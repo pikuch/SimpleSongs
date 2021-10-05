@@ -74,5 +74,17 @@ namespace SimpleSongsTests
 
             Assert.AreEqual(expected, actual);
         }
+
+        [TestCase(-1)]
+        [TestCase(0)]
+        [TestCase(0.9)]
+        public void SongVerifier_ReturnsSongLengthBelowOneSecondMessage_WhenSongLengthIsBelowOneSecond(double length)
+        {
+            Song song = new Song { Title = "a", Author = "b", AlbumName = "c", Length = length };
+            string actual = SongVerifier.Verify(song);
+            string expected = "Song length is below one second";
+
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
