@@ -86,5 +86,15 @@ namespace SimpleSongsTests
 
             Assert.AreEqual(expected, actual);
         }
+
+        [Test]
+        public void SongVerifier_ReturnsOKMessage_WhenSongDataIsValid()
+        {
+            Song song = new Song { Title = "a", Author = "b", AlbumName = "c", Length = 10 };
+            string actual = SongVerifier.Verify(song);
+            string expected = "OK";
+
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
