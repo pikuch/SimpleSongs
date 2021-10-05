@@ -35,7 +35,20 @@ namespace SimpleSongs.Controller
             song.Title = UserInput.GetString("What is the title of the song?", 1, int.MaxValue);
             song.AlbumName = UserInput.GetString("What is the album name of the song?", 1, int.MaxValue);
             song.Length = UserInput.GetInt("What is the song's length in seconds?", 1, int.MaxValue);
-            new SongDao().AddSong(song);
+
+            string songVerificationResult = SongVerifier.Verify(song);
+
+            if (songVerificationResult == "OK")
+            {
+                var songDao = new SongDao();
+                songDao.AddSong(song);
+            }
+            else
+            {
+                Console.Clear();
+                Console.WriteLine($"Song rejected. Reason: {songVerificationResult}");
+                Console.ReadKey(true);
+            }
         }
 
         protected void DeleteExistingSong()
