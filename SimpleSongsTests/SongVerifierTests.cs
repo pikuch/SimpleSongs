@@ -1,5 +1,6 @@
 using NUnit.Framework;
 using SimpleSongs.Controller;
+using SimpleSongs.Model;
 
 namespace SimpleSongsTests
 {
@@ -13,5 +14,26 @@ namespace SimpleSongsTests
 
             Assert.AreEqual(expected, actual);
         }
+
+        [Test]
+        public void SongVerifier_ReturnsSongTitleIsEmptyMessage_WhenSongTitleIsNull()
+        {
+            Song song = new Song { Title = null, Author = "a", AlbumName = "b", Length = 1 };
+            string actual = SongVerifier.Verify(song);
+            string expected = "Song title is empty";
+
+            Assert.AreEqual(expected, actual);
+        }
+
+        [Test]
+        public void SongVerifier_ReturnsSongTitleIsEmptyMessage_WhenSongTitleHasLength0()
+        {
+            Song song = new Song { Title = string.Empty, Author = "a", AlbumName = "b", Length = 1 };
+            string actual = SongVerifier.Verify(song);
+            string expected = "Song title is empty";
+
+            Assert.AreEqual(expected, actual);
+        }
+
     }
 }

@@ -10,6 +10,10 @@ namespace SimpleSongs.Controller
             {
                 return "Song is null";
             }
+            if (song.Title == null || (song.Title != null && song.Title.Length == 0))
+            {
+                return "Song title is empty";
+            }
 
             return "OK";
         }
