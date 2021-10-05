@@ -35,5 +35,25 @@ namespace SimpleSongsTests
             Assert.AreEqual(expected, actual);
         }
 
+        [Test]
+        public void SongVerifier_ReturnsSongAuthorIsEmptyMessage_WhenSongAuthorIsNull()
+        {
+            Song song = new Song { Title = "a", Author = null, AlbumName = "b", Length = 1 };
+            string actual = SongVerifier.Verify(song);
+            string expected = "Song author is empty";
+
+            Assert.AreEqual(expected, actual);
+        }
+
+        [Test]
+        public void SongVerifier_ReturnsSongAuthorIsEmptyMessage_WhenSongAuthorHasLength0()
+        {
+            Song song = new Song { Title = "a", Author = string.Empty, AlbumName = "b", Length = 1 };
+            string actual = SongVerifier.Verify(song);
+            string expected = "Song author is empty";
+
+            Assert.AreEqual(expected, actual);
+        }
+
     }
 }

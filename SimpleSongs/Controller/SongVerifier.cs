@@ -14,6 +14,11 @@ namespace SimpleSongs.Controller
             {
                 return "Song title is empty";
             }
+            if (song.Author == null || (song.Author != null && song.Author.Length == 0))
+            {
+                return "Song author is empty";
+            }
+
 
             return "OK";
         }
